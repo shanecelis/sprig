@@ -205,6 +205,13 @@ export function baseEngine() {
     });
   }
 
+  function setColor(color, r, g, b) {
+    const [_, rgba] = palette.find(([key]) => key === color);
+    rgba[0] = r;
+    rgba[1] = g;
+    rgba[2] = b;
+  }
+
   function clearText() {
     state.texts = [];
   }
@@ -234,7 +241,6 @@ export function baseEngine() {
           return tile.map(s => s.type).indexOf(type);
         })
 
-
         if (!hasDuplicates(matchIndices) && !matchIndices.includes(-1)) tiles.push(tile);
       }
     }
@@ -262,6 +268,7 @@ export function baseEngine() {
     setMap, 
     addText,
     clearText,
+    setColor,
     addSprite,
     getGrid,
     getTile,
